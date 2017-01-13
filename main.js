@@ -23,7 +23,6 @@ var raiderNames = [
   'Vaerryx',
   'Lynnette',
   'Delinkwínt',
-  'Heathh'
 ]
 
 getRaiderArtifactLevels(raiderNames);
