@@ -52,7 +52,6 @@ function getRaiderArtifactLevels(raiderNames) {
         if(counter == 0){
           let averageArtifactLevel = calculateRaidersAverageArtifactLevel(raiderArtifactLevels);
           raiderArtifactLevels["Average Artifact Level"] = averageArtifactLevel;
-          console.log(raiderArtifactLevels);
           createHTMLCards(raiderArtifactLevels);
           return raiderArtifactLevels;
         }
@@ -76,8 +75,6 @@ function calculateRaidersAverageArtifactLevel(raiders){
 }
 
 function createHTMLCards(raiders){
-  console.log(Object.keys(raiders).sort());
-
   var raiderNames = Object.keys(raiders).sort();
 
   let index = raiderNames.indexOf('Average Artifact Level');
@@ -100,7 +97,6 @@ function createHTMLCards(raiders){
     container.appendChild(newRow);
 
     for(let j = 0; j < 4; j++){
-      console.log(raiderNames[i][j]);
       if(raiderNames[i][j] === undefined){
         continue;
       }
