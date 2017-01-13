@@ -25,10 +25,50 @@ var raiderNames = [
   'Delinkwínt',
 ]
 
-getRaiderArtifactLevels(raiderNames);
+var artifactWeapons = {
+  'Maw of the Damned': 'Blood',
+  'Blades of the Fallen Prince': 'Frost',
+  'Apocalypse': 'Unholy',
+  'Twinblades of the Deceiver': 'Havoc',
+  'Aldrachi Warblades': 'Vengeance',
+  'Scythe of Elune': 'Balance',
+  'Fangs of Ashamane': 'Feral',
+  'Claws of Ursoc': 'Guardian',
+  'G\'Hanir, the Mother Tree': 'Resto',
+  'Titanstrike': 'Beast Mastery',
+  'Thas\'dorah, Legacy of the Windrunners': 'Marksmanship',
+  'Talonclaw': 'Survival',
+  'Aluneth': 'Arcane',
+  'Felo\'melorn': 'Fire',
+  'Ebonchill': 'Frost',
+  'Fu Zan, the Wanderer\'s Companion': 'Brewmaster',
+  'Sheilun, Staff of the Mists': 'Mistweaver',
+  'Fists of the Heavens': 'Windwalker',
+  'The Silver Hand': 'Holy',
+  'Truthguard': 'Prot',
+  'Ashbringer': 'Ret',
+  'Light\'s Wrath': 'Discipline',
+  'T\'uure, Beacon of the Naaru': 'Holy',
+  'Xal\'atath, Blade of the Black Empire': 'Shadow',
+  'The Kingslayers': 'Assassination',
+  'The Dreadblades': 'Outlaw',
+  'Fangs of the Devourer': 'Sub',
+  'The Fist of Ra-den': 'Ele',
+  'Doomhammer': 'Enhance',
+  'Sharas\'dal, Scepter of Tides': 'Resto',
+  'Ulthalesh, the Deadwind Harvester': 'Affliction',
+  'Skull of the Man\'ari': 'Demonology',
+  'Scepter of Sargeras': 'Destro',
+  'Strom\'kar, the Warbreaker': 'Arms',
+  'Warswords of the Valarjar': 'Fury',
+  'Scale of the Earth-Warder': 'Prot',
+}
 
-function getRaiderArtifactLevels(raiderNames) {
+getRaiderArtifactLevels(raiderNames, artifactWeapons);
+
+function getRaiderArtifactLevels(raiderNames, artifactWeapons) {
   var raiderArtifactLevels = {};
+  var raiderSpecs = {};
   var counter = raiderNames.length;
 
   for(let i = 0; i < raiderNames.length; i++){
@@ -38,20 +78,31 @@ function getRaiderArtifactLevels(raiderNames) {
       })
       .then(function(json) {
         let artifactLevel = 0;
+        let artifactName = '';
 
         if(raiderNames[i] == 'Cretox') {
           artifactLevel = json.items.offHand.artifactTraits[json.items.offHand.artifactTraits.length-1].rank + 34;
+          artifactName = json.items.offHand.name;
         } else {
           artifactLevel = json.items.mainHand.artifactTraits[json.items.mainHand.artifactTraits.length-1].rank + 34;
+          artifactName = json.items.mainHand.name;
+        }
+
+        for(var name in artifactWeapons){
+          if(artifactName === name){
+            artifactName = artifactWeapons[artifactName];
+            break;
+          }
         }
 
         raiderArtifactLevels[raiderNames[i]] = artifactLevel;
+        raiderSpecs[raiderNames[i]] = artifactName;
         counter--;
 
         if(counter == 0){
           let averageArtifactLevel = calculateRaidersAverageArtifactLevel(raiderArtifactLevels);
           raiderArtifactLevels["Average Artifact Level"] = averageArtifactLevel;
-          createHTMLCards(raiderArtifactLevels);
+          createHTMLCards(raiderArtifactLevels, raiderSpecs);
           return raiderArtifactLevels;
         }
       })
@@ -73,7 +124,7 @@ function calculateRaidersAverageArtifactLevel(raiders){
   return average;
 }
 
-function createHTMLCards(raiders){
+function createHTMLCards(raiders, raiderSpec){
   var raiderNames = Object.keys(raiders).sort();
 
   let index = raiderNames.indexOf('Average Artifact Level');
@@ -104,20 +155,25 @@ function createHTMLCards(raiders){
       let article = document.createElement('article');
       let p1 = document.createElement('p');
       let p2 = document.createElement('p');
+      let p3 = document.createElement('p');
       let raider = document.createTextNode(raiderNames[i][j]);
       let artifactLevel = document.createTextNode(raiders[raiderNames[i][j]]);
+      let specName = document.createTextNode(raiderSpec[raiderNames[i][j]]);
 
       tile.classList.add('tile', 'is-parent');
       article.classList.add('tile', 'is-child', 'box');
       p1.classList.add('title');
       p2.classList.add('subtitle');
+      p3.classList.add('subtitle');
 
       newRow.appendChild(tile);
       tile.appendChild(article);
       article.appendChild(p1);
       article.appendChild(p2);
+      article.appendChild(p3);
       p1.appendChild(raider);
-      p2.appendChild(artifactLevel);
+      p2.appendChild(specName);
+      p3.appendChild(artifactLevel);
     }
   }
 }
