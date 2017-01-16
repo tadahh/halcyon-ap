@@ -80,12 +80,19 @@ function getRaiderArtifactLevels(raiderNames, artifactWeapons) {
         let artifactLevel = 0;
         let artifactName = '';
 
-        if(raiderNames[i] == 'Cretox') {
-          artifactLevel = json.items.offHand.artifactTraits[json.items.offHand.artifactTraits.length-1].rank + 34;
-          artifactName = json.items.offHand.name;
-        } else {
-          artifactLevel = json.items.mainHand.artifactTraits[json.items.mainHand.artifactTraits.length-1].rank + 34;
-          artifactName = json.items.mainHand.name;
+        if(json.items.mainHand.artifactTraits.length == 0){
+          artifactLevel = '< 35';
+          artifactName = 'Noob';
+        } else{
+
+          if(raiderNames[i] == 'Cretox') {
+            artifactLevel = json.items.offHand.artifactTraits[json.items.offHand.artifactTraits.length-1].rank + 34;
+            artifactName = json.items.offHand.name;
+          } else {
+            artifactLevel = json.items.mainHand.artifactTraits[json.items.mainHand.artifactTraits.length-1].rank + 34;
+            artifactName = json.items.mainHand.name;
+          }
+
         }
 
         for(var name in artifactWeapons){
@@ -125,6 +132,8 @@ function calculateRaidersAverageArtifactLevel(raiders){
 }
 
 function createHTMLCards(raiders, raiderSpec){
+  console.log(raiders);
+  console.log(raiderSpec);
   var raiderNames = Object.keys(raiders).sort();
 
   let index = raiderNames.indexOf('Average Artifact Level');
