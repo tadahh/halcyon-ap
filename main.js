@@ -144,6 +144,7 @@ function createHTMLCards(raiders, raiderSpec){
 
     newRow.id = 'row'+ i;
     newRow.classList.add('tile', 'is-ancestor','has-text-centered', 'is-mobile');
+    container.classList.add('is-mobile');
     container.appendChild(newRow);
 
     for(let j = 0; j < 4; j++){
