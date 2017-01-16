@@ -121,12 +121,18 @@ function getRaiderArtifactLevels(raiderNames, artifactWeapons) {
 
 function calculateRaidersAverageArtifactLevel(raiders){
   var average = 0;
+  var correctSpecRaiders = Object.keys(raiders).length;
 
   for (var key in raiders) {
-    average += raiders[key];
+    if(raiders[key] == '< 35'){
+      average += 0;
+      correctSpecRaiders--;
+    } else{
+      average += raiders[key];
+    }
   }
 
-  average = (average/Object.keys(raiders).length).toFixed(2);
+  average = (average/correctSpecRaiders).toFixed(2);
 
   return average;
 }
