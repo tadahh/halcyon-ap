@@ -2,7 +2,45 @@
     margin: 2rem;
   }
 
-  
+  /*.Restoration, .Guardian, .Feral, .Balance {
+    color: #FF7D0A !important;
+  }
+
+  .Frost, .Unholy, .Blood {
+    color: #C41F3B !important;
+  }
+
+  .Vengeance, .Havoc {
+    color: #A330C9 !important;
+  }
+
+  .Marksmanship, .Survival, .BeastMastery {
+    color: #ABD473 !important;
+  }
+
+  .Arcane, .Fire {
+    color: 	#69CCF0	!important;
+  }
+
+  .Mistweaver, .Brewmaster, .Windwalker {
+    color: #00FF96	!important;
+  }
+
+  .Assassination, .Sub, .Outlaw {
+    color: #FFF569	!important;
+  }
+
+  .Resto, .Ele, .Enhance {
+    color: #0070DE	!important;
+  }
+
+  .Affliction, .Destro, .Demonology {
+    color: #9482C9 !important;
+  }
+
+  .Prot, .Arms, .Fury {
+    color: #C79C6E	!important;
+  }*/
 
   @media screen and (min-width: 1000px){
     .container {

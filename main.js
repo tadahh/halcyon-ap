@@ -34,7 +34,7 @@ var artifactWeapons = {
   'Scythe of Elune': 'Balance',
   'Fangs of Ashamane': 'Feral',
   'Claws of Ursoc': 'Guardian',
-  'G\'Hanir, the Mother Tree': 'Resto',
+  'G\'Hanir, the Mother Tree': 'Restoration',
   'Titanstrike': 'Beast Mastery',
   'Thas\'dorah, Legacy of the Windrunners': 'Marksmanship',
   'Talonclaw': 'Survival',
@@ -45,7 +45,7 @@ var artifactWeapons = {
   'Sheilun, Staff of the Mists': 'Mistweaver',
   'Fists of the Heavens': 'Windwalker',
   'The Silver Hand': 'Holy',
-  'Truthguard': 'Prot',
+  'Truthguard': 'Protection',
   'Ashbringer': 'Ret',
   'Light\'s Wrath': 'Discipline',
   'T\'uure, Beacon of the Naaru': 'Holy',
@@ -143,7 +143,7 @@ function createHTMLCards(raiders, raiderSpec){
     var newRow = document.createElement('div');
 
     newRow.id = 'row'+ i;
-    newRow.classList.add('tile', 'is-ancestor','has-text-centered');
+    newRow.classList.add('tile', 'is-ancestor','has-text-centered', 'is-mobile');
     container.appendChild(newRow);
 
     for(let j = 0; j < 4; j++){
@@ -163,7 +163,7 @@ function createHTMLCards(raiders, raiderSpec){
       tile.classList.add('tile', 'is-parent');
       article.classList.add('tile', 'is-child', 'box');
       p1.classList.add('title');
-      p2.classList.add('subtitle');
+      p2.classList.add('subtitle', raiderSpec[raiderNames[i][j]]);
       p3.classList.add('subtitle');
 
       newRow.appendChild(tile);
