@@ -2,6 +2,31 @@
     margin: 2rem;
   }
 
+  .loader {
+      border: 8px solid #f3f3f3 !important; /* Light grey */
+      border-top: 8px solid #00d1b2 !important; /* Blue */
+      border-radius: 20%;
+      width: 120px;
+      height: 120px;
+      animation: spin 2s linear infinite;
+  }
+
+  @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+  }
+
+  .center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+  }
+
+  .iconPadding {
+    padding-top: 33%;
+  }
+
   /*.Restoration, .Guardian, .Feral, .Balance {
     color: #FF7D0A !important;
   }

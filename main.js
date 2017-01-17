@@ -190,6 +190,10 @@ function createHTMLCards(raiders, raiderSpec){
       p2.appendChild(specName);
       p3.appendChild(artifactLevel);
     }
+
+    let loader = document.getElementById('loader');
+    loader.classList.add('is-hidden');
+    container.classList.remove('is-hidden');
   }
 }
 
