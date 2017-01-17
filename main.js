@@ -192,8 +192,8 @@ function createHTMLCards(raiders, raiderSpec){
     }
 
     let loader = document.getElementById('loader');
-    loader.classList.add('is-hidden');
-    container.classList.remove('is-hidden');
+    //loader.classList.add('is-hidden');
+    //container.classList.remove('is-hidden');
   }
 }
 
