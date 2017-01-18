@@ -80,7 +80,7 @@ function getRaiderArtifactLevels(raiderNames, artifactWeapons) {
         let artifactLevel = 0;
         let artifactName = '';
 
-        if(json.items.mainHand.artifactTraits.length == 0){
+        if(json.items.mainHand.artifactTraits.length == 0 && raiderNames[i] != 'Cretox'){
           artifactLevel = '< 35';
           artifactName = 'Noob';
         } else{
