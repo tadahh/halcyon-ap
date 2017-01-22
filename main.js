@@ -192,9 +192,9 @@ function createHTMLCards(raiders, raiderSpec) {
             p3.appendChild(artifactLevel);
         }
 
-        let loader = document.getElementById('loader');
-        //loader.classList.add('is-hidden');
-        //container.classList.remove('is-hidden');
+        let loader = document.getElementById('loadingIcon');
+        loader.classList.add('is-hidden');
+        container.classList.remove('is-hidden');
     }
 }
 
