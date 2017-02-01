@@ -2,7 +2,6 @@ var raiderNames = [
     'Cretox',
     'Sineris',
     'Juhgz',
-    'Laneyqt',
     'Kiiren',
     'Strazi',
     'Hexiled',
