@@ -22,6 +22,9 @@ var raiderNames = [
     'Vaerryx',
     'Lynnette',
     'Delinkwínt',
+    'Velleiri',
+    'Bledgor',
+    'Lavacakes',
 ]
 
 var artifactWeapons = {
